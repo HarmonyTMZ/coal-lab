@@ -565,3 +565,347 @@ mov cx,10
     inc si 
     loop l2   
       
+Write a program to input 10 values in an array and push those values in stack. Reverse the values of array with the help of stack.
+
+.model small
+.stack 10h
+.data
+
+ arr dw ?,?,?,?,?,?,?,?,?,?
+ str1 db "Enter 10 inputs : $"
+ str2 db 10d,13d,"Reversed values are : $"
+ 
+.code
+    
+    ;enabling data segment
+    mov ax,@data
+    mov ds,ax
+    
+    ;displaying to enter 10 inputs
+    mov dx,offset str1
+    mov ah,09
+    int 21h
+    
+    mov cx,10
+    mov si,0
+    
+    l1:
+        
+        ;taking inputs
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        mov ah,0
+        mov [arr+si],ax
+        
+        ;pushing values into the stack
+        ;mov ah,0
+        push [arr+si] 
+    
+        inc si
+    
+    loop l1
+    
+    
+    ;reversing the values
+    mov dx,offset str2
+    mov ah,09
+    int 21h
+    
+    mov cx,10
+    mov si,0
+    
+    l2:
+        mov ax,0
+        pop ax
+        
+        mov [arr+si],ax
+        
+        ;displaying values
+        mov dx,[arr+si]
+        add dx,48
+        mov ah,02
+        int 21h
+        
+        inc si
+        
+        
+    loop l2
+    
+ mov ah, 4ch                  
+ int 21h
+
+
+
+Write a program to input 10 values from user in variables. Find prime numbers and push them in stack. Pop and display only those values which are lessthan 17.
+
+.model small
+.stack 10h
+.data
+ 
+ count dw 0
+ var1 dw ?
+ var2 dw ?
+ var3 dw ?
+ var4 dw ?
+ var5 dw ?
+ var6 dw ?
+ var7 dw ?
+ var8 dw ?
+ var9 dw ?
+ var10 dw ?
+ 
+ str1 db "Enter 10 inputs : $"
+ str2 db 10d,13d,"Displaying prime values which are less than 7:- $"
+ 
+.code
+    
+    ;enabling data segment
+    mov ax,@data
+    mov ds,ax
+    
+    ;displaying to enter 10 inputs
+    mov dx,offset str1
+    mov ah,09
+    int 21h
+    
+        ;taking input var1
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var1,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP1
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var1
+        inc count
+        
+        SKIP1:
+        
+        ;taking input var2
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var2,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP2
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var2
+        inc count
+        
+        SKIP2:
+        
+        ;taking input var3
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var3,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP3
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var3
+        inc count
+        
+        SKIP3:
+        
+        ;taking input var4
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var4,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP4
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var4
+        inc count
+        
+        SKIP4:
+        
+        ;taking input var5
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var5,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP5
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var5
+        inc count
+        
+        SKIP5:
+        
+        ;taking input var6
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var6,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP6
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var6
+        inc count
+        
+        SKIP6:
+        
+        ;taking input var7
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var7,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP7
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var7
+        inc count
+        
+        SKIP7:
+        
+        ;taking input var8
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var8,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP8
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var8
+        inc count
+        
+        SKIP8:
+        
+        ;taking input var9
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var9,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP9
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var9
+        inc count
+        
+        SKIP9:
+        
+        ;taking input var10
+        mov ah,01
+        int 21h
+        sub al,48
+        
+        ;finding prime
+        mov ah,0
+        mov var10,ax ;Values are being saved in the variable
+        mov bl,1
+        div bl
+        
+        cmp ah,0
+        jne SKIP10
+        
+        ;pushing values into the stack
+        mov ah,0
+        push var10
+        inc count
+        
+        SKIP10:
+  
+    
+    ;Displaying prime values which are less than 7
+    mov dx,offset str2
+    mov ah,09
+    int 21h
+    
+    mov cx,count
+    
+    l2:
+        mov dx,0
+        pop dx
+        
+        cmp dx,7
+        
+        jae SKIP
+        
+        
+;displaying values
+add dx,48
+mov ah,02
+int 21h
+        
+        
+SKIP:
+        
+        
+ loop l2
+ mov ah, 4ch                   
+ int 21h 
